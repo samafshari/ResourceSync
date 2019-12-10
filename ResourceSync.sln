@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceSync", "ResourceSync.csproj", "{6964AD4A-31EE-4C81-96BF-C8F898C4A330}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6964AD4A-31EE-4C81-96BF-C8F898C4A330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6964AD4A-31EE-4C81-96BF-C8F898C4A330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6964AD4A-31EE-4C81-96BF-C8F898C4A330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6964AD4A-31EE-4C81-96BF-C8F898C4A330}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF947F1A-0CDB-4A61-96FE-DC0E27B8E2D4}
+	EndGlobalSection
+EndGlobal

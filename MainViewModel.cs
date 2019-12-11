@@ -33,8 +33,8 @@ namespace ResourceSync
                 var exts = Extensions.ToLower().Split(',');
                 var files = Directory.EnumerateFiles(PathiOS)
                     .Where(f => exts.Any(e => f.ToLower().EndsWith($".{e}")))
-                    .OrderByDescending(x => x.Length)
-                    .ThenByDescending(x => x)
+                    .OrderBy(x => x.Length)
+                    .ThenBy(x => x)
                     .ToArray();
 
                 foreach (var item in files)

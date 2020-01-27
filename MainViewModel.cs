@@ -37,10 +37,10 @@ namespace ResourceSync
             }
         }
 
-        public string Extensions { get; set; } = "jpg,png";
-        public string Folder1x { get; set; } = "drawable-xhdpi";
-        public string Folder2x { get; set; } = "drawable-xhdpi";
-        public string Folder3x { get; set; } = "drawable-xhdpi";
+        public string Extensions { get; set; } 
+        public string Folder1x { get; set; } 
+        public string Folder2x { get; set; } 
+        public string Folder3x { get; set; } 
         public new string Log { get; set; }
 
         public Visibility ControlsVisibility => IsBusy ? Visibility.Collapsed : Visibility.Visible;
@@ -49,6 +49,7 @@ namespace ResourceSync
         public MainViewModel()
         {
             Status = TaskStatuses.Success;
+            ClearCommand.Execute(null);
         }
 
         void Load(Settings model)
@@ -184,6 +185,22 @@ namespace ResourceSync
 
         public Command DoAndroidCommand => new Command(() =>
         {
+            async Task DoAndroidFolderAsync(string directory, string suffix, string ext)
+            {
+                var files = Directory.EnumerateFiles(directory).Where(x => x.EndsWith(ext));
+                foreach (var file in files)
+                {
+                    var fi = new FileInfo(file);
+                    var name = fi.Name;
+                    name = name.Substring(0, name.Length - (ext.Length + 1)) + suffix + "." + ext;
+                    var dest = Path.Combine(PathiOS, name);
+                    File.Copy(file, dest, true);
+                    Log += $"{file} -> {dest}\n";
+                }
+                UpdateProperties();
+                await Task.Yield();
+            }
+
             Task.Run(async () =>
             {
                 try
@@ -191,7 +208,12 @@ namespace ResourceSync
                     Status = TaskStatuses.Busy;
                     Log = "";
                     var exts = Extensions.ToLower().Split(',');
-                    // TODO: Do Android
+                    foreach (var ext in exts)
+                    {
+                        await DoAndroidFolderAsync(Path.Combine(PathAndroid, Folder1x), "", ext);
+                        await DoAndroidFolderAsync(Path.Combine(PathAndroid, Folder2x), "@2x", ext);
+                        await DoAndroidFolderAsync(Path.Combine(PathAndroid, Folder3x), "@3x", ext);
+                    }
                 }
                 finally
                 {

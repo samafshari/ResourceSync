@@ -83,7 +83,7 @@
                     <Button Grid.Column="1" Content="Copy Android to iOS" Command="{Binding DoAndroidCommand}" />
                 </Grid>
             </StackPanel>
-            <TextBlock Text="{Binding Log}" Grid.Row="1" />
+            <TextBox Text="{Binding Log}" Grid.Row="1" IsReadOnly="True" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" />
         </Grid>
     </Grid>
 </Window>

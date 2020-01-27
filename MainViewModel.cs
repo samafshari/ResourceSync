@@ -134,13 +134,24 @@ namespace ResourceSync
         void TryGuessAndroidPath()
         {
             if (PathAndroid.HasValue()) return;
-            // TODO: Guess
+            if (PathiOS.IsNW()) return;
+            if (!PathiOS.Contains(".iOS")) return;
+            var path = PathiOS.Replace(".iOS", ".Android");
+
+            if (!Directory.Exists(path))
+                path = PathiOS.Replace(".iOS", ".Droid");
+            if (Directory.Exists(path))
+                PathAndroid = path;
         }
 
         void TryGuessiOSPath()
         {
             if (PathiOS.HasValue()) return;
-            // TODO: Guess
+            if (PathAndroid.IsNW()) return;
+            if (!PathAndroid.Contains(".Android") && !PathAndroid.Contains(".Droid")) return;
+            var path = PathiOS.Replace(".Android", ".iOS").Replace(".Droid", ".iOS");
+            if (Directory.Exists(path))
+                PathiOS = path;
         }
 
         public Command DoiOSCommand => new Command(() =>

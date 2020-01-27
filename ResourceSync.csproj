@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.props" Condition="Exists('packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.props')" />
+  <Import Project="packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.props" Condition="Exists('packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,23 +38,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTK.GLControl, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>packages\OpenTK.GLControl.3.0.1\lib\net20\OpenTK.GLControl.dll</HintPath>
+    <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
     <Reference Include="RedCorners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\RedCorners.5.0.0\lib\netstandard2.0\RedCorners.dll</HintPath>
+      <HintPath>packages\RedCorners.6.0.0\lib\netstandard2.0\RedCorners.dll</HintPath>
+    </Reference>
+    <Reference Include="RedCorners.Components.ObjectStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\RedCorners.Components.ObjectStorage.6.5.0\lib\netstandard2.0\RedCorners.Components.ObjectStorage.dll</HintPath>
     </Reference>
     <Reference Include="RedCorners.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\RedCorners.Forms.5.39.0\lib\netstandard2.0\RedCorners.Forms.dll</HintPath>
+      <HintPath>packages\RedCorners.Forms.6.41.0\lib\netstandard2.0\RedCorners.Forms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -71,16 +77,16 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Xamarin.Forms.4.3.0.991221\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>packages\Xamarin.Forms.4.4.0.991537\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Xamarin.Forms.4.3.0.991221\lib\netstandard2.0\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>packages\Xamarin.Forms.4.4.0.991537\lib\netstandard2.0\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.WPF, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Xamarin.Forms.Platform.WPF.4.3.0.991221\lib\net45\Xamarin.Forms.Platform.WPF.dll</HintPath>
+      <HintPath>packages\Xamarin.Forms.Platform.WPF.4.4.0.991537\lib\net45\Xamarin.Forms.Platform.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Xamarin.Forms.4.3.0.991221\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>packages\Xamarin.Forms.4.4.0.991537\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -139,8 +145,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.props'))" />
-    <Error Condition="!Exists('packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.props'))" />
+    <Error Condition="!Exists('packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.targets'))" />
   </Target>
-  <Import Project="packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.4.3.0.991221\build\Xamarin.Forms.targets')" />
+  <Import Project="packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.4.4.0.991537\build\Xamarin.Forms.targets')" />
 </Project>

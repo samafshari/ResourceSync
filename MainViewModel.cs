@@ -11,6 +11,7 @@ using System.Windows;
 using Microsoft.Win32;
 using RedCorners;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using Newtonsoft.Json;
 
 namespace ResourceSync
 {
@@ -51,6 +52,7 @@ namespace ResourceSync
         {
             Status = TaskStatuses.Success;
             ClearCommand.Execute(null);
+            Load("defaults.sync");
         }
 
         void Load(Settings model)
@@ -64,6 +66,48 @@ namespace ResourceSync
             UpdateProperties();
         }
 
+        void Load(string path)
+        {
+            try
+            {
+                var json = File.ReadAllText(path);
+                var model = JsonConvert.DeserializeObject<Settings>(json);
+                Load(model);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
+            }
+        }
+
+        void Save(string path)
+        {
+            Settings.Instance = new Settings
+            {
+                Android1x = Folder1x,
+                Android2x = Folder2x,
+                Android3x = Folder3x,
+                Extensions = Extensions,
+                PathAndroid = PathAndroid,
+                PathiOS = PathiOS
+            };
+
+            try
+            {
+                var json = JsonConvert.SerializeObject(Settings.Instance);
+                File.WriteAllText(path, json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
+            }
+        }
+
+        void SaveDefaults()
+        {
+            Save("defaults.sync");
+        }
+
         public Command ClearCommand => new Command(() =>
         {
             Load(new Settings());
@@ -74,11 +118,11 @@ namespace ResourceSync
             try
             {
                 var fo = new OpenFileDialog();
-                fo.DefaultExt = "sync";
+                fo.Filter = "Sync Settings|*.sync";
                 fo.ShowDialog();
                 if (File.Exists(fo.FileName))
                 {
-                    // TODO: Load Model
+                    Load(fo.FileName);
                 }
             }
             catch (Exception ex)
@@ -92,9 +136,10 @@ namespace ResourceSync
             try
             {
                 var fo = new SaveFileDialog();
-                fo.DefaultExt = "sync";
+                fo.Filter = "Sync Settings|*.sync";
+                fo.CheckFileExists = false;
                 fo.ShowDialog();
-                // TODO: Save Model
+                Save(fo.FileName);
             }
             catch (Exception ex)
             {
@@ -160,7 +205,7 @@ namespace ResourceSync
             if (PathiOS.HasValue()) return;
             if (PathAndroid.IsNW()) return;
             if (!PathAndroid.Contains(".Android") && !PathAndroid.Contains(".Droid")) return;
-            var path = PathiOS.Replace(".Android", ".iOS").Replace(".Droid", ".iOS");
+            var path = PathAndroid.Replace(".Android", ".iOS").Replace(".Droid", ".iOS");
             if (Directory.Exists(path))
                 PathiOS = path;
         }
@@ -197,6 +242,7 @@ namespace ResourceSync
                         UpdateProperties();
                         await Task.Yield();
                     }
+                    SaveDefaults();
                 }
                 finally
                 {
@@ -236,6 +282,7 @@ namespace ResourceSync
                         await DoAndroidFolderAsync(Path.Combine(PathAndroid, Folder2x), "@2x", ext);
                         await DoAndroidFolderAsync(Path.Combine(PathAndroid, Folder3x), "@3x", ext);
                     }
+                    SaveDefaults();
                 }
                 finally
                 {

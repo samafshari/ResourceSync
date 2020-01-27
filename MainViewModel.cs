@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
 using RedCorners;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace ResourceSync
 {
@@ -105,8 +106,7 @@ namespace ResourceSync
         {
             try
             {
-                // TODO: Pick folder dialog
-                string path = "";
+                var path = PickFolder();
                 if (Directory.Exists(path))
                     PathiOS = path;
             }
@@ -120,8 +120,7 @@ namespace ResourceSync
         {
             try
             {
-                // TODO: Pick folder dialog
-                string path = "";
+                var path = PickFolder();
                 if (Directory.Exists(path))
                     PathAndroid = path;
             }
@@ -130,6 +129,18 @@ namespace ResourceSync
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
             }
         });
+
+        string PickFolder()
+        {
+            var dialog = new CommonOpenFileDialog
+            {
+                IsFolderPicker = true
+            };
+            dialog.ShowDialog();
+            if (Directory.Exists(dialog.FileName))
+                return dialog.FileName;
+            return null;
+        }
 
         void TryGuessAndroidPath()
         {

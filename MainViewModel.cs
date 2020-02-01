@@ -48,12 +48,14 @@ namespace ResourceSync
         public Visibility ControlsVisibility => IsBusy ? Visibility.Collapsed : Visibility.Visible;
         public Visibility WorkingVisibility => IsBusy ? Visibility.Visible : Visibility.Collapsed;
 
+        string DefaultsFile => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "defaults.sync");
+
         public MainViewModel()
         {
             Status = TaskStatuses.Success;
             ClearCommand.Execute(null);
-            if (File.Exists("defaults.sync"))
-                Load("defaults.sync");
+            if (File.Exists(DefaultsFile))
+                Load(DefaultsFile);
         }
 
         void Load(Settings model)
@@ -106,7 +108,7 @@ namespace ResourceSync
 
         void SaveDefaults()
         {
-            Save("defaults.sync");
+            Save(DefaultsFile);
         }
 
         public Command ClearCommand => new Command(() =>

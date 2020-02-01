@@ -52,7 +52,8 @@ namespace ResourceSync
         {
             Status = TaskStatuses.Success;
             ClearCommand.Execute(null);
-            Load("defaults.sync");
+            if (File.Exists("defaults.sync"))
+                Load("defaults.sync");
         }
 
         void Load(Settings model)
